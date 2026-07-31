@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.miequipo.mifeature.generated","l":"FeatureConstants"},{"p":"com.tu.equipo.generated","l":"FeatureConstants"},{"p":"com.miequipo.mifeature","l":"FeatureMain"}];updateSearchResults();
