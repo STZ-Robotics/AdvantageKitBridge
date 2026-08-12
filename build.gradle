@@ -3,7 +3,7 @@ import groovy.json.JsonSlurper
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id "edu.wpi.first.GradleRIO" version "2026.1.1" 
+    id "edu.wpi.first.GradleRIO" version "2026.1.1"
 }
 
 def jsonFile = file('MarsFeature.json')
@@ -17,18 +17,8 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-repositories {
-    mavenCentral()
-
-    maven {
-        url = uri("https://Imcab.github.io/FORGEmini/maven/")
-    }
-
-    maven {
-        url = uri("https://STZ-Robotics.github.io/Mars/maven/")
-    }
-}
-
+// Traduce constraints tipo ">=1.6.0" del MarsFeature.json a rangos de Gradle,
+// para no tener que actualizar versiones a mano en 3 repos distintos.
 def toGradleRange(String constraint) {
     if (constraint.startsWith(">=")) {
         return "[${constraint.substring(2).trim()},)"
@@ -39,12 +29,21 @@ def toGradleRange(String constraint) {
     } else if (constraint.startsWith("<")) {
         return "(,${constraint.substring(1).trim()})"
     }
-    // Sin operador: se asume versión exacta
     return constraint.trim()
+}
+
+repositories {
+    mavenCentral()
+
+    maven { url = uri("https://Imcab.github.io/FORGEmini/maven/") }
+    maven { url = uri("https://STZ-Robotics.github.io/Mars/maven/") }
+    // El repo de AdvantageKit (frcmaven.wpi.edu) lo agrega automáticamente
+    // GradleRIO al detectar vendordeps/AdvantageKit.json — no hace falta declararlo aquí.
 }
 
 dependencies {
     implementation wpi.java.deps.wpilib()
+    implementation wpi.java.vendor.java()
     implementation "edu.wpi.first.wpilibNewCommands:wpilibNewCommands-java:${wpi.versions.wpilibVersion.get()}"
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
@@ -52,6 +51,12 @@ dependencies {
 
     implementation "com.stzteam.forgemini:ForgeMini:${toGradleRange(parsedJson.forgeMiniRequired)}"
     implementation "com.stzteam.mars:Mars:${toGradleRange(parsedJson.marsCoreRequired)}"
+
+    // AdvantageKit: el runtime (Logger, LogTable, LoggableInputs) llega vía el
+    // vendordep en vendordeps/AdvantageKit.json, inyectado automáticamente por GradleRIO.
+    // Solo el annotation processor requiere declaración manual, según la doc oficial de AK.
+    def akitJson = new JsonSlurper().parseText(new File(projectDir.getAbsolutePath() + "/vendordeps/AdvantageKit.json").text)
+    annotationProcessor "org.littletonrobotics.akit:akit-autolog:$akitJson.version"
 }
 
 publishing {
@@ -59,11 +64,11 @@ publishing {
         mavenJava(MavenPublication) {
             from components.java
             groupId = group
-            artifactId = parsedJson.featureId 
+            artifactId = parsedJson.featureId
             version = version
         }
     }
-    
+
     repositories {
         maven {
             name = 'LocalRepo'
@@ -78,11 +83,10 @@ javadoc {
 
 task generateFeatureConstants {
     doLast {
-
         def packagePath = parsedJson.groupId.replace('.', '/')
         def srcDir = file("$projectDir/src/main/java/${packagePath}/generated")
         srcDir.mkdirs()
-        
+
         def javaFile = new File(srcDir, "FeatureConstants.java")
         javaFile.text = """package ${parsedJson.groupId}.generated;
 

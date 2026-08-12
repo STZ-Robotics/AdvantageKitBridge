@@ -1,19 +1,19 @@
 {
-  "featureId": "TemplateFeature",
-  "name": "Nombre de tu Feature",
+  "featureId": "AdvantageKitBridge",
+  "name": "MARS AdvantageKit Bridge",
   "version": "1.0.0",
-  "groupId": "com.tu.equipo",
-  "author": "Tu Equipo",
-  "description": "Descripción de lo que hace tu nodo.",
-  "marsCoreRequired": ">=1.6.0",
-  "forgeMiniRequired": ">=1.1.0",
+  "groupId": "com.stzteam.features.advantagekitbridge",
+  "author": "STZ-Robotics",
+  "description": "Bridges every MARS ModularSubsystem's input snapshots into AdvantageKit's logging and replay pipeline, reusing ForgeMini's reflection-based field/struct serialization convention. No changes required to existing Data classes.",
+  "marsCoreRequired": ">=1.6.4",
+  "forgeMiniRequired": ">=1.1.2",
   "mavenUrls": [
-    "https://TU-USUARIO.github.io/TU-REPO/maven/"
+    "https://stz-robotics.github.io/AdvantageKitBridge/maven/"
   ],
   "javaDependencies": [
     {
-      "groupId": "com.tu.equipo",
-      "artifactId": "TemplateFeature",
+      "groupId": "com.stzteam.features.advantagekitbridge",
+      "artifactId": "STZ-Robotics",
       "version": "1.0.0",
       "isProcessor": false
     }
