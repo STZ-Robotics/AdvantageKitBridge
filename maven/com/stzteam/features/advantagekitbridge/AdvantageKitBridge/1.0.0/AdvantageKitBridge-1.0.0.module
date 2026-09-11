@@ -23,15 +23,164 @@
         "org.gradle.libraryelements": "jar",
         "org.gradle.usage": "java-api"
       },
+      "dependencies": [
+        {
+          "group": "edu.wpi.first.wpilibj",
+          "module": "wpilibj-java",
+          "version": {
+            "requires": "2026.1.1"
+          }
+        },
+        {
+          "group": "edu.wpi.first.wpimath",
+          "module": "wpimath-java",
+          "version": {
+            "requires": "2026.1.1"
+          }
+        },
+        {
+          "group": "edu.wpi.first.ntcore",
+          "module": "ntcore-java",
+          "version": {
+            "requires": "2026.1.1"
+          }
+        },
+        {
+          "group": "edu.wpi.first.cscore",
+          "module": "cscore-java",
+          "version": {
+            "requires": "2026.1.1"
+          }
+        },
+        {
+          "group": "edu.wpi.first.cameraserver",
+          "module": "cameraserver-java",
+          "version": {
+            "requires": "2026.1.1"
+          }
+        },
+        {
+          "group": "edu.wpi.first.hal",
+          "module": "hal-java",
+          "version": {
+            "requires": "2026.1.1"
+          }
+        },
+        {
+          "group": "edu.wpi.first.wpinet",
+          "module": "wpinet-java",
+          "version": {
+            "requires": "2026.1.1"
+          }
+        },
+        {
+          "group": "edu.wpi.first.wpiutil",
+          "module": "wpiutil-java",
+          "version": {
+            "requires": "2026.1.1"
+          }
+        },
+        {
+          "group": "edu.wpi.first.apriltag",
+          "module": "apriltag-java",
+          "version": {
+            "requires": "2026.1.1"
+          }
+        },
+        {
+          "group": "edu.wpi.first.wpiunits",
+          "module": "wpiunits-java",
+          "version": {
+            "requires": "2026.1.1"
+          }
+        },
+        {
+          "group": "edu.wpi.first.epilogue",
+          "module": "epilogue-runtime-java",
+          "version": {
+            "requires": "2026.1.1"
+          }
+        },
+        {
+          "group": "edu.wpi.first.thirdparty.frc2025.opencv",
+          "module": "opencv-java",
+          "version": {
+            "requires": "4.10.0-3"
+          }
+        },
+        {
+          "group": "org.ejml",
+          "module": "ejml-simple",
+          "version": {
+            "requires": "0.44.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-annotations",
+          "version": {
+            "requires": "2.19.2"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-core",
+          "version": {
+            "requires": "2.19.2"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-databind",
+          "version": {
+            "requires": "2.19.2"
+          }
+        },
+        {
+          "group": "us.hebi.quickbuf",
+          "module": "quickbuf-runtime",
+          "version": {
+            "requires": "1.4"
+          }
+        },
+        {
+          "group": "org.littletonrobotics.akit",
+          "module": "akit-java",
+          "version": {
+            "requires": "26.0.2"
+          }
+        },
+        {
+          "group": "edu.wpi.first.wpilibNewCommands",
+          "module": "wpilibNewCommands-java",
+          "version": {
+            "requires": "2026.1.1"
+          }
+        },
+        {
+          "group": "com.stzteam.forgemini",
+          "module": "ForgeMini",
+          "version": {
+            "requires": "[1.1.2,)"
+          }
+        },
+        {
+          "group": "com.stzteam.mars",
+          "module": "Mars",
+          "version": {
+            "requires": "[1.6.5,)"
+          }
+        }
+      ],
       "files": [
         {
           "name": "AdvantageKitBridge-1.0.0.jar",
           "url": "AdvantageKitBridge-1.0.0.jar",
-          "size": 6436,
-          "sha512": "378035b1f10dd10fba47d724776deb9073fb5de5ff996ef6f2c6eef722bcc969bafe92355bd3144fafa7b2b2fe5cf5bf5eb830b68c0e7674d1ac1c4852cb43fe",
-          "sha256": "ea66d0fe3863d244f72d56a76738473d7ca90a51175043b31146417618879b9d",
-          "sha1": "3f2adb9c8dc0a3903a88c5bebff1cd2ca991813c",
-          "md5": "0e6849073d95b0129e740f59b2bc69f7"
+          "size": 63232,
+          "sha512": "0d4f797bab401e194ff97a2cba8d388c8e54635f10402827606672890adaa83e71b78cc3fe4104c67b4d7e50105310787dd32d1b0a4f1e66e8c2eb0e3b331a03",
+          "sha256": "93b3bf7cf4095f74b28c7b6a1be68793b4b252c4d48dadd22584f955ca0a637f",
+          "sha1": "72b9e36c3657c6955c365de2bdad65945ed96c6f",
+          "md5": "614b77a67be5a533fc73f8db10ac613c"
         }
       ]
     },
@@ -189,7 +338,7 @@
           "group": "com.stzteam.mars",
           "module": "Mars",
           "version": {
-            "requires": "[1.6.4,)"
+            "requires": "[1.6.5,)"
           }
         }
       ],
@@ -197,11 +346,51 @@
         {
           "name": "AdvantageKitBridge-1.0.0.jar",
           "url": "AdvantageKitBridge-1.0.0.jar",
-          "size": 6436,
-          "sha512": "378035b1f10dd10fba47d724776deb9073fb5de5ff996ef6f2c6eef722bcc969bafe92355bd3144fafa7b2b2fe5cf5bf5eb830b68c0e7674d1ac1c4852cb43fe",
-          "sha256": "ea66d0fe3863d244f72d56a76738473d7ca90a51175043b31146417618879b9d",
-          "sha1": "3f2adb9c8dc0a3903a88c5bebff1cd2ca991813c",
-          "md5": "0e6849073d95b0129e740f59b2bc69f7"
+          "size": 63232,
+          "sha512": "0d4f797bab401e194ff97a2cba8d388c8e54635f10402827606672890adaa83e71b78cc3fe4104c67b4d7e50105310787dd32d1b0a4f1e66e8c2eb0e3b331a03",
+          "sha256": "93b3bf7cf4095f74b28c7b6a1be68793b4b252c4d48dadd22584f955ca0a637f",
+          "sha1": "72b9e36c3657c6955c365de2bdad65945ed96c6f",
+          "md5": "614b77a67be5a533fc73f8db10ac613c"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "AdvantageKitBridge-1.0.0-javadoc.jar",
+          "url": "AdvantageKitBridge-1.0.0-javadoc.jar",
+          "size": 146900,
+          "sha512": "3ef7ae8af52c2a20f9c9b62fb251647047168977963217ea2cfcc6ed070e0bee3b31f5b04ac05537e82bf8876498bc5bff12f894ead84c0a6d204e2777e77227",
+          "sha256": "41f5b55fcda652848586249e510dc231c204e2bdc69984b88de4bea18ea96a76",
+          "sha1": "92ba0cc56d595600650a086fbae21e48a297dad3",
+          "md5": "ea4e145e0df7b3c47e95c49750eac40b"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "AdvantageKitBridge-1.0.0-sources.jar",
+          "url": "AdvantageKitBridge-1.0.0-sources.jar",
+          "size": 30686,
+          "sha512": "0058ba26be7ebd9611491594c952aad3b4c3387268eb6b8bf6a6e4aa9f17fc34d2cadbaaa490c9809847a1b3e1bed60fceabdeba63fd798ef4ea59b637cc22d7",
+          "sha256": "6b0ea58809d9d482e6fc6bab963a7fd95cfc6ae59cf64353cd492619b5b627e8",
+          "sha1": "82f3dc3f6e9d3854bd21f070d081651f9d4426fb",
+          "md5": "336c7a65c8a7a1e2df05a38c44a9b8df"
         }
       ]
     }

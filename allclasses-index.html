@@ -15,7 +15,11 @@
 <script type="text/javascript" src="script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="all-classes-index-page">
-<script type="text/javascript">var pathtoroot = "./";
+<script type="text/javascript">var evenRowColor = "even-row-color";
+var oddRowColor = "odd-row-color";
+var tableTab = "table-tab";
+var activeTableTab = "active-table-tab";
+var pathtoroot = "./";
 loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -50,25 +54,71 @@ loadScripts(document, 'script');</script>
 <h1 title="All Classes and Interfaces" class="title">All Classes and Interfaces</h1>
 </div>
 <div id="all-classes-table">
-<div class="caption"><span>Classes</span></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="all-classes-table-tab0" role="tab" aria-selected="true" aria-controls="all-classes-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table', 2)" class="active-table-tab">All Classes and Interfaces</button><button id="all-classes-table-tab2" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab2', 2)" class="table-tab">Classes</button><button id="all-classes-table-tab3" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab3', 2)" class="table-tab">Enum Classes</button><button id="all-classes-table-tab7" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab7', 2)" class="table-tab">Annotation Interfaces</button></div>
+<div id="all-classes-table.tabpanel" role="tabpanel" aria-labelledby="all-classes-table-tab0">
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Class</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/generated/FeatureConstants.html" title="class in com.stzteam.features.advantagekitbridge.generated">FeatureConstants</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/MarsAdvantageKitBridge.html" title="class in com.stzteam.features.advantagekitbridge">MarsAdvantageKitBridge</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/AdvantageKitBridge.html" title="class in com.stzteam.features.advantagekitbridge">AdvantageKitBridge</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The entry point of the MARS &lt;-&gt; AdvantageKit bridge Feature.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/BridgeConfig.html" title="class in com.stzteam.features.advantagekitbridge">BridgeConfig</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Entry point for the MARS &lt;-&gt; AdvantageKit bridge Feature.</div>
+<div class="block">Immutable configuration for the MARS &lt;-&gt; AdvantageKit bridge.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/BridgeConfig.Builder.html" title="class in com.stzteam.features.advantagekitbridge">BridgeConfig.Builder</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Fluent builder for <a href="com/stzteam/features/advantagekitbridge/BridgeConfig.html" title="class in com.stzteam.features.advantagekitbridge"><code>BridgeConfig</code></a>.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="com/stzteam/features/advantagekitbridge/BridgeConfig.KeyStyle.html" title="enum class in com.stzteam.features.advantagekitbridge">BridgeConfig.KeyStyle</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
+<div class="block">How a <code>Data</code> field name is turned into an AdvantageKit log key.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/internal/BridgeLog.html" title="class in com.stzteam.features.advantagekitbridge.internal">BridgeLog</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Console reporting for the bridge, with de-duplication.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/generated/FeatureConstants.html" title="class in com.stzteam.features.advantagekitbridge.generated">FeatureConstants</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/internal/LogCodec.html" title="class in com.stzteam.features.advantagekitbridge.internal">LogCodec</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">A pre-resolved read/write plan for a single field of a MARS <code>Data</code> class.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/internal/LogCodecFactory.html" title="class in com.stzteam.features.advantagekitbridge.internal">LogCodecFactory</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Compiles a MARS <code>Data</code> class into the flat list of <a href="com/stzteam/features/advantagekitbridge/internal/LogCodec.html" title="class in com.stzteam.features.advantagekitbridge.internal"><code>LogCodec</code></a>s that moves it
+ in and out of an AdvantageKit <code>LogTable</code>.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab7"><a href="com/stzteam/features/advantagekitbridge/annotations/LogExclude.html" title="annotation interface in com.stzteam.features.advantagekitbridge.annotations">LogExclude</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab7">
+<div class="block">Marks a public field of a MARS <code>Data</code> class as invisible to the AdvantageKit bridge.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab7"><a href="com/stzteam/features/advantagekitbridge/annotations/LogName.html" title="annotation interface in com.stzteam.features.advantagekitbridge.annotations">LogName</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab7">
+<div class="block">Overrides the AdvantageKit log key used for a field of a MARS <code>Data</code> class.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab7"><a href="com/stzteam/features/advantagekitbridge/annotations/LogUnit.html" title="annotation interface in com.stzteam.features.advantagekitbridge.annotations">LogUnit</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab7">
+<div class="block">Attaches a unit string to a numeric field so AdvantageScope can label and convert it.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/MarsDiagnosticsLogger.html" title="class in com.stzteam.features.advantagekitbridge">MarsDiagnosticsLogger</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Mirrors MARS' diagnostic state into AdvantageKit outputs.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/MarsLoggableInput.html" title="class in com.stzteam.features.advantagekitbridge">MarsLoggableInput</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Adapts any MARS <code>Data&lt;T&gt;</code> object into an AdvantageKit <code>LoggableInputs</code>,
- reusing the same "public fields + optional static <code>.struct</code> field" convention
- already used by ForgeMini's <code>NetworkIO</code>, but targeting AdvantageKit's
- <code>LogTable</code> instead of NetworkTables.</div>
+<div class="block">Adapts any MARS <code>Data</code> snapshot into an AdvantageKit <code>LoggableInputs</code>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/Test.html" title="class in com.stzteam.features.advantagekitbridge">Test</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/MarsLoggedRobot.html" title="class in com.stzteam.features.advantagekitbridge">MarsLoggedRobot</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">A <code>LoggedRobot</code> that boots MARS and AdvantageKit together.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/stzteam/features/advantagekitbridge/MarsReplayIO.html" title="class in com.stzteam.features.advantagekitbridge">MarsReplayIO</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Builds an inert <code>IO</code> implementation for replay.</div>
+</div>
+</div>
 </div>
 </div>
 </main>

@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.stzteam.features.advantagekitbridge"},{"l":"com.stzteam.features.advantagekitbridge.generated"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.stzteam.features.advantagekitbridge"},{"l":"com.stzteam.features.advantagekitbridge.annotations"},{"l":"com.stzteam.features.advantagekitbridge.generated"},{"l":"com.stzteam.features.advantagekitbridge.internal"}];updateSearchResults();
