@@ -9,12 +9,19 @@ plugins {
 def jsonFile = file('MarsFeature.json')
 def parsedJson = new JsonSlurper().parseText(jsonFile.text)
 
+// The AdvantageKit version is owned by the vendordep, so the Feature can never drift from
+// the runtime the robot actually deploys.
+def akitJson = new JsonSlurper().parseText(file('vendordeps/AdvantageKit.json').text)
+def akitVersion = akitJson.version
+
 group = parsedJson.groupId
 version = parsedJson.version
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
+    withJavadocJar()
+    withSourcesJar()
 }
 
 // Traduce constraints tipo ">=1.6.0" del MarsFeature.json a rangos de Gradle,
@@ -37,27 +44,51 @@ repositories {
 
     maven { url = uri("https://Imcab.github.io/FORGEmini/maven/") }
     maven { url = uri("https://STZ-Robotics.github.io/Mars/maven/") }
-    // El repo de AdvantageKit (frcmaven.wpi.edu) lo agrega automáticamente
-    // GradleRIO al detectar vendordeps/AdvantageKit.json — no hace falta declararlo aquí.
+    // GradleRIO agrega este repo solo al detectar vendordeps/AdvantageKit.json. Lo
+    // declaramos igual porque akit-java aparece como dependencia explicita abajo.
+    maven { url = uri("https://frcmaven.wpi.edu/artifactory/littletonrobotics-mvn-release/") }
 }
 
 dependencies {
-    implementation wpi.java.deps.wpilib()
-    implementation wpi.java.vendor.java()
-    implementation "edu.wpi.first.wpilibNewCommands:wpilibNewCommands-java:${wpi.versions.wpilibVersion.get()}"
+    // 'api' y no 'implementation': el Feature expone tipos de AdvantageKit y de MARS en su
+    // superficie publica (MarsLoggedRobot extiende LoggedRobot, MarsLoggableInput implementa
+    // LoggableInputs), asi que el robot que lo consume necesita verlos al compilar.
+    api wpi.java.deps.wpilib()
+    api wpi.java.vendor.java()
+    api "edu.wpi.first.wpilibNewCommands:wpilibNewCommands-java:${wpi.versions.wpilibVersion.get()}"
+
+    api "com.stzteam.forgemini:ForgeMini:${toGradleRange(parsedJson.forgeMiniRequired)}"
+    api "com.stzteam.mars:Mars:${toGradleRange(parsedJson.marsCoreRequired)}"
+    api "org.littletonrobotics.akit:akit-java:${akitVersion}"
+
+    // El annotation processor de @AutoLog es opcional para el Feature en si, pero lo dejamos
+    // disponible para los tests (que verifican la ruta de AutoLog) y para quien extienda el repo.
+    annotationProcessor "org.littletonrobotics.akit:akit-autolog:${akitVersion}"
+    testAnnotationProcessor "org.littletonrobotics.akit:akit-autolog:${akitVersion}"
+
+    // Librerias nativas de escritorio: sin esto los tests no pueden inicializar el HAL y
+    // cualquier cosa que toque Timer o los structs de wpimath truena.
+    //
+    // Ojo: aqui NO se incluye wpi.java.vendor.jni*(). AdvantageKit distribuye su propio
+    // wpiHal (akit-wpilibio) que reemplaza al de WPILib para alimentar el conduit, y esa
+    // version solo es cargable dentro de un LoggedRobot real: cargarla en un JVM de test
+    // tumba el proceso. Los tests solo necesitan el HAL estandar.
+    nativeDebug wpi.java.deps.wpilibJniDebug(wpi.platforms.desktop)
+    nativeRelease wpi.java.deps.wpilibJniRelease(wpi.platforms.desktop)
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
-    implementation "com.stzteam.forgemini:ForgeMini:${toGradleRange(parsedJson.forgeMiniRequired)}"
-    implementation "com.stzteam.mars:Mars:${toGradleRange(parsedJson.marsCoreRequired)}"
-
-    // AdvantageKit: el runtime (Logger, LogTable, LoggableInputs) llega vía el
-    // vendordep en vendordeps/AdvantageKit.json, inyectado automáticamente por GradleRIO.
-    // Solo el annotation processor requiere declaración manual, según la doc oficial de AK.
-    def akitJson = new JsonSlurper().parseText(new File(projectDir.getAbsolutePath() + "/vendordeps/AdvantageKit.json").text)
-    annotationProcessor "org.littletonrobotics.akit:akit-autolog:$akitJson.version"
 }
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+}
+
+wpi.java.configureTestTasks(test)
 
 publishing {
     publications {
@@ -66,6 +97,11 @@ publishing {
             groupId = group
             artifactId = parsedJson.featureId
             version = version
+
+            pom {
+                name = parsedJson.name
+                description = parsedJson.description
+            }
         }
     }
 
@@ -82,21 +118,30 @@ javadoc {
 }
 
 task generateFeatureConstants {
-    doLast {
-        def packagePath = parsedJson.groupId.replace('.', '/')
-        def srcDir = file("$projectDir/src/main/java/${packagePath}/generated")
-        srcDir.mkdirs()
+    def packagePath = parsedJson.groupId.replace('.', '/')
+    def constantsFile = file("$projectDir/src/main/java/${packagePath}/generated/FeatureConstants.java")
+    def featureVersion = parsedJson.version
+    def featureName = parsedJson.featureId
 
-        def javaFile = new File(srcDir, "FeatureConstants.java")
-        javaFile.text = """package ${parsedJson.groupId}.generated;
+    outputs.file(constantsFile)
+
+    doLast {
+        constantsFile.parentFile.mkdirs()
+        constantsFile.text = """package ${parsedJson.groupId}.generated;
 
 // AUTO-GENERATED FILE DO NOT EDIT
 public final class FeatureConstants {
-    public static final String FEATURE_VERSION = "${parsedJson.version}";
-    public static final String FEATURE_NAME = "${parsedJson.featureId}";
+    public static final String FEATURE_VERSION = "${featureVersion}";
+    public static final String FEATURE_NAME = "${featureName}";
 }
 """
     }
 }
 
 compileJava.dependsOn generateFeatureConstants
+
+// FeatureConstants.java se genera dentro de src/main/java, asi que cualquier tarea que lea
+// ese directorio tiene que esperar a que exista. Sin esto Gradle marca la dependencia
+// implicita como error de configuracion.
+tasks.named('sourcesJar') { dependsOn generateFeatureConstants }
+tasks.named('javadoc') { dependsOn generateFeatureConstants }

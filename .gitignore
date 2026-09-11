@@ -1,7 +1,9 @@
 .gradle/
 build/
+bin/
+maven/
 .DS_Store
 *.class
 *.log
+hs_err_pid*.log
 .vscode/
-src/main/java/com/stzteam/mars/generated/
