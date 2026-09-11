@@ -3,7 +3,7 @@
   "component": {
     "group": "com.stzteam.features.advantagekitbridge",
     "module": "AdvantageKitBridge",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "attributes": {
       "org.gradle.status": "release"
     }
@@ -174,13 +174,13 @@
       ],
       "files": [
         {
-          "name": "AdvantageKitBridge-1.0.0.jar",
-          "url": "AdvantageKitBridge-1.0.0.jar",
-          "size": 63232,
-          "sha512": "0d4f797bab401e194ff97a2cba8d388c8e54635f10402827606672890adaa83e71b78cc3fe4104c67b4d7e50105310787dd32d1b0a4f1e66e8c2eb0e3b331a03",
-          "sha256": "93b3bf7cf4095f74b28c7b6a1be68793b4b252c4d48dadd22584f955ca0a637f",
-          "sha1": "72b9e36c3657c6955c365de2bdad65945ed96c6f",
-          "md5": "614b77a67be5a533fc73f8db10ac613c"
+          "name": "AdvantageKitBridge-1.1.0.jar",
+          "url": "AdvantageKitBridge-1.1.0.jar",
+          "size": 63789,
+          "sha512": "c1238551b7ddb489d024280f43993cf6ac4100d563adc809eca22f22c2d4fc0d602d08ee42f1ceb41c32fa28c3687e5913e170cde13bf4e16d67101dee4c7e50",
+          "sha256": "3c0be6c159fe1fa1d6b5dc73370a02f1748bdbb6ceefe6c36fc3ab300b4e97f2",
+          "sha1": "0f2eb153aff363c1c635ec1f002f772d255324f4",
+          "md5": "9e762113c8e79b369f1300f882421311"
         }
       ]
     },
@@ -344,13 +344,13 @@
       ],
       "files": [
         {
-          "name": "AdvantageKitBridge-1.0.0.jar",
-          "url": "AdvantageKitBridge-1.0.0.jar",
-          "size": 63232,
-          "sha512": "0d4f797bab401e194ff97a2cba8d388c8e54635f10402827606672890adaa83e71b78cc3fe4104c67b4d7e50105310787dd32d1b0a4f1e66e8c2eb0e3b331a03",
-          "sha256": "93b3bf7cf4095f74b28c7b6a1be68793b4b252c4d48dadd22584f955ca0a637f",
-          "sha1": "72b9e36c3657c6955c365de2bdad65945ed96c6f",
-          "md5": "614b77a67be5a533fc73f8db10ac613c"
+          "name": "AdvantageKitBridge-1.1.0.jar",
+          "url": "AdvantageKitBridge-1.1.0.jar",
+          "size": 63789,
+          "sha512": "c1238551b7ddb489d024280f43993cf6ac4100d563adc809eca22f22c2d4fc0d602d08ee42f1ceb41c32fa28c3687e5913e170cde13bf4e16d67101dee4c7e50",
+          "sha256": "3c0be6c159fe1fa1d6b5dc73370a02f1748bdbb6ceefe6c36fc3ab300b4e97f2",
+          "sha1": "0f2eb153aff363c1c635ec1f002f772d255324f4",
+          "md5": "9e762113c8e79b369f1300f882421311"
         }
       ]
     },
@@ -364,13 +364,13 @@
       },
       "files": [
         {
-          "name": "AdvantageKitBridge-1.0.0-javadoc.jar",
-          "url": "AdvantageKitBridge-1.0.0-javadoc.jar",
-          "size": 146900,
-          "sha512": "3ef7ae8af52c2a20f9c9b62fb251647047168977963217ea2cfcc6ed070e0bee3b31f5b04ac05537e82bf8876498bc5bff12f894ead84c0a6d204e2777e77227",
-          "sha256": "41f5b55fcda652848586249e510dc231c204e2bdc69984b88de4bea18ea96a76",
-          "sha1": "92ba0cc56d595600650a086fbae21e48a297dad3",
-          "md5": "ea4e145e0df7b3c47e95c49750eac40b"
+          "name": "AdvantageKitBridge-1.1.0-javadoc.jar",
+          "url": "AdvantageKitBridge-1.1.0-javadoc.jar",
+          "size": 147748,
+          "sha512": "086a9f09750faf3544cbab4ee98e716978c8dbc7a441d012d3faae31e3555fea3318819be80e74edec00f12e9fafe24faf40905a3ca3da2b61e68a57794c3547",
+          "sha256": "0d0b6c2ecd5e52b52f77e35ff87e2ec4d665bf3efc544378c43e8181ea9566f7",
+          "sha1": "c1d5859f4e0e7104604ca738be3c3492d66dea2a",
+          "md5": "0a7c3e24b380098d40dc5292a43192dd"
         }
       ]
     },
@@ -384,13 +384,13 @@
       },
       "files": [
         {
-          "name": "AdvantageKitBridge-1.0.0-sources.jar",
-          "url": "AdvantageKitBridge-1.0.0-sources.jar",
-          "size": 30686,
-          "sha512": "0058ba26be7ebd9611491594c952aad3b4c3387268eb6b8bf6a6e4aa9f17fc34d2cadbaaa490c9809847a1b3e1bed60fceabdeba63fd798ef4ea59b637cc22d7",
-          "sha256": "6b0ea58809d9d482e6fc6bab963a7fd95cfc6ae59cf64353cd492619b5b627e8",
-          "sha1": "82f3dc3f6e9d3854bd21f070d081651f9d4426fb",
-          "md5": "336c7a65c8a7a1e2df05a38c44a9b8df"
+          "name": "AdvantageKitBridge-1.1.0-sources.jar",
+          "url": "AdvantageKitBridge-1.1.0-sources.jar",
+          "size": 31600,
+          "sha512": "43533dfde5dfc8d329acb638ea7905b20160d877f5f5aac047ba215ba706891689f317046bc92419a78187664c27dc881537fd92803e036810d601bbf81aee37",
+          "sha256": "81f40f2dc7b24d54309fe24086b5871ff3f0a42e89af89d7e1791e281a73dfc6",
+          "sha1": "a35984c34fcb33fda500a4f1e395a968181ee9c6",
+          "md5": "6e8be7de536523311f563186963d6d87"
         }
       ]
     }

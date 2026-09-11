@@ -1,7 +1,7 @@
 {
   "featureId": "AdvantageKitBridge",
   "name": "MARS AdvantageKit Bridge",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "groupId": "com.stzteam.features.advantagekitbridge",
   "author": "STZ-Robotics",
   "description": "Bridges every MARS ModularSubsystem's input snapshots into AdvantageKit's logging and replay pipeline, reusing ForgeMini's reflection-based field/struct serialization convention. Also mirrors MARS diagnostics as AdvantageKit outputs and ships a LoggedRobot base wired to the MARS RunMode. No changes required to existing IO interfaces or Data classes.",
@@ -15,7 +15,7 @@
     {
       "groupId": "com.stzteam.features.advantagekitbridge",
       "artifactId": "AdvantageKitBridge",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "isProcessor": false
     }
   ],
