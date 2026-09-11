@@ -123,6 +123,10 @@ task generateFeatureConstants {
     def featureVersion = parsedJson.version
     def featureName = parsedJson.featureId
 
+    // Sin estos inputs Gradle solo mira si el archivo existe, y un cambio de version en
+    // MarsFeature.json deja FEATURE_VERSION desactualizado sin avisar.
+    inputs.property('featureVersion', featureVersion)
+    inputs.property('featureName', featureName)
     outputs.file(constantsFile)
 
     doLast {

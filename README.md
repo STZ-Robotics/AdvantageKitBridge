@@ -139,6 +139,49 @@ That is it. Subsystems do not get registered one by one.
 `addPeriodic`, and `setUseTiming(false)` lets replay run as fast as the machine allows
 (`MarsLoggedRobot` does that for you in `REPLAY`).
 
+#### Extra receivers
+
+Each run mode brings the receivers AdvantageKit's guide prescribes for it: `REAL` writes a
+`.wpilog` and publishes to NetworkTables, `SIM` only publishes, `REPLAY` reads the selected
+log and writes a `_sim` copy beside it. Note what `SIM` does *not* do — it records no file,
+so desktop simulation produces nothing to replay later.
+
+Anything beyond the mode's own receivers goes in the constructor, because `Logger.start()`
+has already run by the time your constructor body executes and AdvantageKit rejects
+receivers after that:
+
+```java
+public Robot() {
+  super(Manifest.CURRENT_MODE, new WPILOGWriter("logs"));   // sim now records too
+}
+```
+
+Extras are registered in every mode. To pick per mode, compute them in a **static** helper —
+it is a `super(...)` argument, so it is evaluated before the instance exists:
+
+```java
+public Robot() {
+  super(Manifest.CURRENT_MODE, simLogger(Manifest.CURRENT_MODE));
+}
+
+private static LogDataReceiver[] simLogger(RunMode mode) {
+  return mode == RunMode.SIM
+      ? new LogDataReceiver[] {new WPILOGWriter("logs")}
+      : new LogDataReceiver[0];
+}
+```
+
+The same parameter exists on the `BridgeConfig` and loop-period overloads:
+
+```java
+super(Manifest.CURRENT_MODE, config, new WPILOGWriter("logs"));
+super(Manifest.CURRENT_MODE, config, 0.02, new WPILOGWriter("logs"));
+```
+
+A log recorded in `SIM` replays like any other — but it holds simulated hardware, so the
+replay reproduces the simulation, not a match. For a real match, record in `REAL` and pull
+the `.wpilog` off the USB stick.
+
 ### Requirements
 
 | Component | Minimum version |
